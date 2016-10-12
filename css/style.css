@@ -1,0 +1,36 @@
+body{
+	background-color: #211f1d;
+}
+
+#window{
+	border-style: groove;
+	border-color: #cf7317;
+	width: 60%;
+	height: 480px;
+    margin: auto;
+    margin-top: 6%;
+    background-color: #5e5953;
+}
+
+#recipeField{
+	margin-top: 50px;
+}
+
+#itemsField, #dragField, #recipeField{
+	text-align: center;
+	padding: 10px;
+}
+
+#dragField{	
+	margin: auto;
+}
+
+#empty{
+	display:inline-block;
+	margin-left: 10px;
+	width: 85px;
+	height: 64px;
+	border-style: groove;
+}
+
+
