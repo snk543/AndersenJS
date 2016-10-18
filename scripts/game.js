@@ -1,49 +1,37 @@
 'use strict';
 
-var items = Items.getItems();
-var recipes = Items.getRecipes();
-var index;
 var itemArray;
-var slots = 0;
+var emptySlots;
 
 function generateGame(){
+	var items = Items.getItems();
+	var recipes = Items.getRecipes();
+
 	for (var i = 0; i < items.length; i++) {
-		var empty = document.createElement('div');
-		empty.id = "empty";
-		empty.ondrop = drop;
-		empty.ondragover = drop;
+		var empty = createEmptySlot();
 		itemsField.appendChild(empty);
-		var item = document.createElement('input');
-		item.type = "image";
-		item.src = "images/" + items[i] + ".png";
-		item.setAttribute('draggable', true);
-		item.ondragstart = drag;
-		item.value = items[i];
-		item.id = items[i] + i;
-		empty.appendChild(item);
+		var input = createDragItem(items[i], i);
+		empty.appendChild(input);
 	}
 
-	index = randomInteger(0, recipes.length - 1);
-	var empty = document.createElement('div');
-	empty.id = "empty";
+	var index = randomInteger(0, recipes.length - 1);
+	empty = document.createElement('div');
+	empty.id  = "empty";
 	recipeField.appendChild(empty);
 	var recipeInput = document.createElement('input');
 	recipeInput.type = "image";
 	recipeInput.src = "images/" + recipes[index].recipe + ".png";
 	recipeInput.id = "recipeItem";
+	recipeInput.addEventListener('click', showRecipeItems);
 	empty.appendChild(recipeInput);
 
 	itemArray = recipes[index].item.slice();
 
 	for (var i = 0; i < recipes[index].item.length; i++) {
-		var empty = document.createElement('div');
-		empty.ondrop = drop;
-		empty.ondragover = drop;
-		empty.id = "empty";
+		empty = createEmptySlot();
 		dragField.appendChild(empty);
 	}
-	slots = 0;
-
+	emptySlots = 0;
 }
 
 function clearFields(){
@@ -62,6 +50,31 @@ function clearFields(){
 	while(children.length){
 		recipeField.removeChild(children[0]);
 	}
+}
+
+function showRecipeItems(event){
+	
+}
+
+function createEmptySlot(){
+	var empty = document.createElement('div');
+	empty.id  = "empty";
+	empty.ondrop = drop;
+	empty.ondragover = allowDrop;
+
+	return empty;
+}
+
+function createDragItem(item, i){
+	var input = document.createElement('input');
+	input.type = "image";
+	input.src = "images/" + item + ".png";
+	input.setAttribute('draggable', true);
+	input.ondragstart = drag;
+	input.value = item;
+	input.id = item + i;
+
+	return input;
 }
 
 /*function removeChildnode(node){

@@ -1,4 +1,6 @@
 var Items = (function (){
+	'use strict';
+	
 	var items = ['Ring of regen', 'Iron branch', 'Ring of protection', 'Iron branch', 'Recipe', 'Circlet', 'Magic stick', 'Chainmail'];
 
 	var recipes = [

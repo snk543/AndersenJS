@@ -13,9 +13,10 @@ function loseMsg(){
 }
 
 function randomInteger(min, max) { 
-var rand = min - 0.5 + Math.random() * (max - min + 1) 
-rand = Math.round(rand); 
-return rand; 
+    var rand = min - 0.5 + Math.random() * (max - min + 1) 
+    rand = Math.round(rand); 
+
+    return rand; 
 }
 
 function allowDrop(ev) {
@@ -29,16 +30,18 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    if (ev.target.id == 'empty'){
+        ev.target.appendChild(document.getElementById(data));
+    }
 
-    slots = 0;
+    emptySlots = 0;
 
     for (i = 0; i < dragField.childNodes.length; i++){
     	if (dragField.childNodes[i].childNodes.length != 0) {
-    		slots++;
+    		emptySlots++;
     	}
     }
-    if (slots == dragField.childNodes.length) {
+    if (emptySlots == dragField.childNodes.length) {
     	for (var i = 0; i < dragField.childNodes.length ; i++){
     		var pos = itemArray.indexOf(dragField.childNodes[i].firstChild.value);
     		if (pos >= 0) {
