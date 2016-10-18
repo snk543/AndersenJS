@@ -1,11 +1,12 @@
 'use strict';
 
+var recipes = Items.getRecipes();
+var index;
 var itemArray;
 var emptySlots;
 
 function generateGame(){
-	var items = Items.getItems();
-	var recipes = Items.getRecipes();
+	var items = Items.getItems();	
 
 	for (var i = 0; i < items.length; i++) {
 		var empty = createEmptySlot();
@@ -14,7 +15,8 @@ function generateGame(){
 		empty.appendChild(input);
 	}
 
-	var index = randomInteger(0, recipes.length - 1);
+	//var index = randomInteger(0, recipes.length - 1);
+	index = randomInteger(0, recipes.length - 1);
 	empty = document.createElement('div');
 	empty.id  = "empty";
 	recipeField.appendChild(empty);
@@ -53,7 +55,7 @@ function clearFields(){
 }
 
 function showRecipeItems(event){
-	
+	alert(recipes[index].item);
 }
 
 function createEmptySlot(){
@@ -76,17 +78,3 @@ function createDragItem(item, i){
 
 	return input;
 }
-
-/*function removeChildnode(node){
-	var children = node.childNodes;
-
-	while(node.length){
-		node.removeChild(children[0]);
-	}
-}
-
-function clearFields(){
-	removeChildnode(dragField);
-	removeChildnode(itemsField);
-	removeChildnode(recipeField);
-}*/

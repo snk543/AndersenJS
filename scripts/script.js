@@ -2,9 +2,3 @@
 
 clearFields();
 generateGame();
-
-
-
-
-
-
