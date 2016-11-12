@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "name": "todo1",
+      "condition": true
+    },
+    {
+      "name": "todo2",
+      "condition": true
+    },
+    {
+      "name": "todo3",
+      "condition": false
+    }
+  ],
+
+  "meetingsUrl": "./meetings/nick.json"
+}

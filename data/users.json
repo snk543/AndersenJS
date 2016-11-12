@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "name": "John",
+      "todoListUrl": "todo/john.json"
+    },
+    {
+      "name": "Nick",
+      "todoListUrl": "todo/nick.json"
+    },
+    {
+      "name": "Rob",
+      "todoListUrl": "todo/rob.json"
+    }
+  ]
+}
